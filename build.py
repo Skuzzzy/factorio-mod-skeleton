@@ -25,8 +25,4 @@ with open("info.json") as dat:
         info_file.write(info_string)
 
     # Generate zip release
-    print os.path.join(release, full_name)
-    print "zip"
-    print release
-    print release_dir
-    shutil.make_archive(os.path.join(release, full_name), "zip", release, release_dir)
+    shutil.make_archive(os.path.join(release, full_name), "zip", release, full_name)
