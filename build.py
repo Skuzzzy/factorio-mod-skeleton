@@ -2,11 +2,11 @@ import os
 import json
 import shutil
 from distutils.dir_util import copy_tree
-
 try:
     shutil.rmtree("release") # Clean
 except:
     pass
+
 with open("info.json") as dat:
     info = json.load(dat)
 
@@ -25,4 +25,4 @@ with open("info.json") as dat:
         info_file.write(info_string)
 
     # Generate zip release
-    shutil.make_archive(os.path.join(release, full_name), "zip", release, full_name)
+    print shutil.make_archive(release_dir, "zip", release, full_name)
