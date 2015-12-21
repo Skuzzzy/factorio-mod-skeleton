@@ -19,10 +19,15 @@ with open("info.json") as dat:
     copy_tree(res_dir, release_dir)
     # get info json in there as well
     # Create info.json
-    json_info_path = os.path.join(release_dir, 'info.json')
+    json_info_path = os.path.join(release_dir, "info.json")
     with open(json_info_path, 'w') as info_file:
         info_string = json.dumps(info, indent=4, sort_keys=True)
         info_file.write(info_string)
 
+    licence_path = os.path.join(base_dir, "LICENSE")
+    release_lic = os.path.join(release_dir, "LICENSE")
+    shutil.copyfile(licence_path, release_lic)
+
     # Generate zip release
-    print shutil.make_archive(release_dir, "zip", release, full_name)
+    shutil.make_archive(release_dir, "zip", release, full_name)
+print "Build complete, targets located in {}".format(release)
