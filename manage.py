@@ -40,8 +40,8 @@ gen_dirs.extend(os.path.join(base_mod_dir, folder) for folder in required_dirs)
 
 for each in gen_dirs:
     if not os.path.exists(each):
-        print "CREATING {}".format(each)
         os.makedirs(each)
+        print "CREATED {}".format(each)
 
 # Create info.json
 json_info_path = os.path.join(managed_mod_dir, 'info.json')
