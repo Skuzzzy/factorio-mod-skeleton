@@ -1,9 +1,7 @@
 import os
 import json
 import shutil
-from zipfile import ZipFile
 from distutils.dir_util import copy_tree
-
 
 try:
     shutil.rmtree("release") # Clean
@@ -20,6 +18,5 @@ with open("info.json") as dat:
     os.makedirs(release_dir) # Prep
     copy_tree(res_dir, release_dir)
 
-    with ZipFile(os.path.join(release, "{}.zip".format(full_name)), "w") as zip_release:
-        zip_release.write(release_dir)
-
+    # Generate zip release
+    shutil.make_archive(os.path.join(release, full_name), "zip", release, full_name)

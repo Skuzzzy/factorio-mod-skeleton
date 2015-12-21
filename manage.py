@@ -43,6 +43,13 @@ for each in gen_dirs:
         os.makedirs(each)
         print "CREATED {}".format(each)
 
+gen_files = []
+gen_files.extend([os.path.join(base_mod_dir, "control.lua"), os.path.join(base_mod_dir, "data.lua")])
+for each in gen_files:
+    open(each, "w").close()
+    print "CREATED {}".format(each)
+
+
 # Create info.json
 json_info_path = os.path.join(managed_mod_dir, 'info.json')
 with open(json_info_path, 'w') as info_file:
